@@ -46,7 +46,15 @@ exports.CreateProduct = async (req, res) => {
     }
 
     const _id = crypto.randomUUID()
-    try { 
+    try {
+
+        const existingProduct = await CrudModel.findOne({ name });
+        
+        if (existingProduct) {
+            return res.status(400).json({ message: "Product with this name already exists." });
+        }
+
+
     const product = new CrudModel({
         productID: _id,
         name,
