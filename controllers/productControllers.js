@@ -150,7 +150,7 @@ try {
     // }
 
     const DeleteProduct = products.find(CrudModel => CrudModel._id == req.params._id)
-    products.splice(productIndex, 1)
+    products.splice(DeleteProduct, 1)
 
     return res.status(200).json({message: 'Product deleted successfully',name:DeleteProduct.name, price:DeleteProduct.price, quantity:DeleteProduct.quantity, active:DeleteProduct.active})
 } catch (error) {
