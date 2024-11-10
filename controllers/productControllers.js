@@ -136,15 +136,22 @@ exports.UpdateProductById = (req, res) => {
 
 //routers.delete('/:_id', )
 exports.DeleteProductById = (req, res) => {
-    const productIndex = products.findIndex(product => product._id == req.params._id)
+    const productIndex = CrudModel.findIndex(rudModel => CrudModel._id == req.params._id);
+    const productIDIndex = CrudModel.find(CrudModel => CrudModel.productID == req.params.productID);
     console.log(productIndex)
+    console.log(productIDIndex)
 
     if(productIndex == -1) {
         return res.status(402).json({message: 'Product not found'})
     }
 
-    const DeleteProduct = products.find(product => product._id == req.params._id)
+    // if(productIDIndex == -1) {
+    //     return res.status(402).json({message: 'Product not found'})
+    // }
+
+    const DeleteProduct = products.find(CrudModel => CrudModel._id == req.params._id);
+    const DeleteProductID = products.find(CrudModel => CrudModel.productID == req.params.productID);
 
     products.splice(productIndex, 1)
-    return res.status(200).json({message: 'Product deleted successfully',name:DeleteProduct.name, price:DeleteProduct.price, quantity:DeleteProduct.quantity, active:DeleteProduct.active})
+    return res.status(200).json({message: 'Product deleted successfully',name:DeleteProduct.name, price:DeleteProduct.price, quantity:DeleteProduct.quantity, active:DeleteProduct.active, productID:DeleteProductID.productID})
 }
