@@ -140,7 +140,7 @@ exports.DeleteProductById = (req, res) => {
     const productIDIndex = CrudModel.find(CrudModel => CrudModel.productID == req.params.productID);
     console.log(productIndex)
     console.log(productIDIndex)
-
+try {
     if(productIndex == -1) {
         return res.status(402).json({message: 'Product not found'})
     }
@@ -151,5 +151,9 @@ exports.DeleteProductById = (req, res) => {
 
     const DeleteProduct = products.find(CrudModel => CrudModel._id == req.params._id)
     products.splice(productIndex, 1)
+
     return res.status(200).json({message: 'Product deleted successfully',name:DeleteProduct.name, price:DeleteProduct.price, quantity:DeleteProduct.quantity, active:DeleteProduct.active, productID:DeleteProductID.productID})
+} catch (error) {
+    return res.status(500).json({message: error.message})
+}
 }
