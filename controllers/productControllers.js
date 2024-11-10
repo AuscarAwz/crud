@@ -136,7 +136,7 @@ exports.UpdateProductById = (req, res) => {
 
 //routers.delete('/:_id', )
 exports.DeleteProductById = (req, res) => {
-    const productIndex = CrudModel.findIndex(rudModel => CrudModel._id == req.params._id);
+    const productIndex = CrudModel.findIndex(CrudModel => CrudModel._id == req.params._id);
     const productIDIndex = CrudModel.find(CrudModel => CrudModel.productID == req.params.productID);
     console.log(productIndex)
     console.log(productIDIndex)
