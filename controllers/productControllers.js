@@ -87,9 +87,9 @@ exports.CreateProduct = async (req, res) => {
 //                   email: req.body.email
 
 } catch (error) {
-    if (error.code === 11000) {
-        return res.status(400).json({ message: "Email already exists. . ." });
-    }
+    // if (error.code === 11000) {
+    //     return res.status(400).json({ message: "Email already exists. . ." });
+    // }
     return res.status(500).json({message: error.message})
 }
 }
