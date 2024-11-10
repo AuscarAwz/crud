@@ -166,3 +166,35 @@ exports.DeleteProductById = async (req, res) => {
     return res.status(500).json({message: error.message})
 }
 }
+
+exports.DeleteProductIDById = async (req, res) => {
+    try {
+    const  productIndexID = await CrudModel.findById(req.params.productID);
+
+    //const productIndex = await CrudModel.findIndex(CrudModel => CrudModel._id == req.params._id);
+    //const productIDIndex = await CrudModel.findIndex(CrudModel => CrudModel.productID == req.params.productID);
+    console.log(productIndexID)
+    //console.log(productIDIndex)
+
+    
+    if(!productIndexID) {
+        return res.status(404).json({message: 'Product not found'})
+    }
+
+    // if(productIndex == -1) {
+    //     return res.status(402).json({message: 'Product not found'})
+    // }
+
+    // if(productIDIndex == -1) {
+    //     return res.status(402).json({message: 'Product not found'})
+    // }
+
+    //const DeleteProduct = await CrudModel.findIndex(CrudModel => CrudModel._id == req.params._id)
+    //products.splice(DeleteProduct, 1)
+    const DeleteProductID = await CrudModel.deleteOne({ productID: req.params.productID });
+
+    return res.status(200).json({message: 'Product deleted successfully',name:DeleteProductID.name, price:DeleteProductID.price, quantity:DeleteProductID.quantity, active:DeleteProductID.active})
+} catch (error) {
+    return res.status(500).json({message: error.message})
+}
+}
