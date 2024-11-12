@@ -167,52 +167,52 @@ exports.DeleteProductById = async (req, res) => {
 }
 }
 
-// exports.DeleteProductIDById = async (req, res) => {
-//     try {
-
-//     const  productIndexID = await CrudModel.findById( req.params.productID);
-
-//     console.log(productIndexID)
-
-    
-//     if(!productIndexID) {
-//         return res.status(404).json({message: 'Product not found'})
-//     }
-    
-//     const DeleteProductID = await CrudModel.deleteOne({ productID: req.params.productID });
-
-//     return res.status(200).json({message: 'Product deleted successfully',name:DeleteProductID.name, price:DeleteProductID.price, quantity:DeleteProductID.quantity, active:DeleteProductID.active})
-// } catch (error) {
-//     return res.status(500).json({message: error.message})
-// }
-// }
-
 exports.DeleteProductIDById = async (req, res) => {
     try {
-        // Find the product by productID
-        const product  = await CrudModel.findOne({ productID: req.params.productID });
-console.log(product)
-        // Check if the product exists
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
-        }
 
-        // Delete the product using productID
-        const deleteResult = await CrudModel.deleteOne({ productID: req.params.productID });
+    const  productIndexID = await CrudModel.findById( req.params.productID);
 
-        // Check if the deletion was successful
-        if (deleteResult.deletedCount === 0) {
-            return res.status(500).json({ message: 'Failed to delete the product' });
-        }
+    console.log(productIndexID)
 
-        // Return the deleted product details
-        return res.status(200).json({
-            message: 'Product deleted successfully',
-            deletedProductID: req.params.productID
-        });
-        
-    } catch (error) {
-        // Handle any errors that occur
-        return res.status(500).json({ message: error.message });
+    
+    if(!productIndexID) {
+        return res.status(404).json({message: 'Product not found'})
     }
-};
+    
+    const DeleteProductID = await CrudModel.deleteOne({ productID: req.params.productID });
+
+    return res.status(200).json({message: 'Product deleted successfully',name:DeleteProductID.name, price:DeleteProductID.price, quantity:DeleteProductID.quantity, active:DeleteProductID.active})
+} catch (error) {
+    return res.status(500).json({message: error.message})
+}
+}
+
+// exports.DeleteProductIDById = async (req, res) => {
+//     try {
+//         // Find the product by productID
+//         const product  = await CrudModel.findOne({ productID: req.params.productID });
+// console.log(product)
+//         // Check if the product exists
+//         if (!product) {
+//             return res.status(404).json({ message: 'Product not found' });
+//         }
+
+//         // Delete the product using productID
+//         const deleteResult = await CrudModel.deleteOne({ productID: req.params.productID });
+
+//         // Check if the deletion was successful
+//         if (deleteResult.deletedCount === 0) {
+//             return res.status(500).json({ message: 'Failed to delete the product' });
+//         }
+
+//         // Return the deleted product details
+//         return res.status(200).json({
+//             message: 'Product deleted successfully',
+//             deletedProductID: req.params.productID
+//         });
+        
+//     } catch (error) {
+//         // Handle any errors that occur
+//         return res.status(500).json({ message: error.message });
+//     }
+// };
