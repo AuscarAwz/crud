@@ -169,23 +169,30 @@ exports.DeleteProductById = async (req, res) => {
 
 exports.DeleteProductIDById = async (req, res) => {
     try {
-
-    const  productIndexID = await CrudModel.findOne( req.params.productID);
-
-    console.log(productIndexID)
+        
+        const  productIndexID = await CrudModel.findOne( req.params.productID);
+        console.log(productIndexID)
 
     
     if(!productIndexID) {
         return res.status(404).json({message: 'Product not found'})
     }
     
-    const DeleteProductID = await CrudModel.deleteOne({ productID: req.params.productID });
-
-    return res.status(200).json({message: 'Product deleted successfully',name:DeleteProductID.name, price:DeleteProductID.price, quantity:DeleteProductID.quantity, active:DeleteProductID.active})
+    const DeleteProductResult = await CrudModel.deleteOne({ productID: req.params.productID });
+    if (DeleteProductResult.deletedCount === 0) {
+                     return res.status(500).json({ message: 'Failed to delete the product' });
+                 }
+    return res.status(200).json({
+                     message: 'Product deleted successfully',
+                     deletedProductID: req.params.productID
+                 });
+    
 } catch (error) {
     return res.status(500).json({message: error.message})
 }
 }
+//return res.status(200).json({message: 'Product deleted successfully',name:DeleteProductResult.name, price:DeleteProductResult.price, quantity:DeleteProductResult.quantity, active:DeleteProductResult.active})
+
 
 // exports.DeleteProductIDById = async (req, res) => {
 //     try {
