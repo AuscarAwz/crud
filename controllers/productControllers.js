@@ -191,7 +191,7 @@ exports.DeleteProductIDById = async (req, res) => {
     try {
         // Find the product by productID
         const product  = await CrudModel.findOne({ productID: req.params.productID });
-
+console.log(product)
         // Check if the product exists
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
