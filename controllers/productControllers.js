@@ -170,7 +170,7 @@ exports.DeleteProductById = async (req, res) => {
 exports.DeleteProductIDById = async (req, res) => {
     try {
 
-    const  productIndexID = await CrudModel.findById( req.params.productID);
+    const  productIndexID = await CrudModel.findOne( req.params.productID);
 
     console.log(productIndexID)
 
