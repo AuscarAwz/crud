@@ -208,11 +208,9 @@ exports.DeleteProductIDById = async (req, res) => {
         // Return the deleted product details
         return res.status(200).json({
             message: 'Product deleted successfully',
-            name: product.name,
-            price: product.price,
-            quantity: product.quantity,
-            active: product.active
+            deletedProductID: req.params.productID
         });
+        
     } catch (error) {
         // Handle any errors that occur
         return res.status(500).json({ message: error.message });
