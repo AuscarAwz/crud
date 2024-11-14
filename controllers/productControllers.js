@@ -38,7 +38,7 @@ exports.getAllProducts = async (req, res) => {
 //routers.post('/', )
 exports.CreateProduct = async (req, res) => {
    
-
+    try {
     const { name, email, price, quantity, active } = req.body
 
     if(!name || !price || !quantity || !active || !email) {
@@ -46,7 +46,7 @@ exports.CreateProduct = async (req, res) => {
     }
 
     const _id = crypto.randomUUID()
-    try {
+    
 
         const existingProduct = await CrudModel.findOne({ name });
         
