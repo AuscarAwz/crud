@@ -41,7 +41,7 @@ exports.CreateProduct = async (req, res) => {
     try {
     const { name, email, price, quantity, active } = req.body
 
-    if(!name || !price || !quantity || !email || active === null||active === undefined) {
+    if(!name || !price || !quantity || !email || active === null || active === undefined) {
 
         return res.status(422).json({message: 'All fields are required'})
     }
