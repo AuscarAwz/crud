@@ -48,7 +48,8 @@ connectDBRecords(); //connectDB();
 //   }));
 
 
-app.use('/products', require('./routes/productRoute'))
+app.use('/products', require('./routes/productRoute'));
+app.use('/Emprecord', require('./routes/empRoute.js') )
 
 app.listen(PORT, () => console.log(`Server start on port ${PORT}`))
 //app.listen(8000, () => console.log(`Server start on pot 8000`))
