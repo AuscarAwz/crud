@@ -6,6 +6,10 @@ const LoginValidation = mongoose.Schema({
         type: String,
         Unique: true,
         required: true
+    },
+    passwordbryt: {
+        type: String,
+        required: true
     }
 });
 
