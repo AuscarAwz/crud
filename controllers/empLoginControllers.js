@@ -1,7 +1,7 @@
 const express = require('express');
 const empLoginModel = require('../model/loginModel.js');
-const routerControl = express.Router();
 const bcrypt = require('bcrypt');
+const routerControl = express.Router();
 
 exports.CreateUser = async (req, res) => {
     try {
