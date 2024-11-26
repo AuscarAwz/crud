@@ -7,9 +7,10 @@ const LoginValidation = mongoose.Schema({
         Unique: true,
         required: true
     },
-    passwordbryt: {
-        type: String
-    } //required: true
+    // passwordbryt: {
+    //     type: String,
+    //     required: true
+    // } //required: true
 });
 
 const LoginModel = mongoose.model('Emprecord', LoginValidation);
