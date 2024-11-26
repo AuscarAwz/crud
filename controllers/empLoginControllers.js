@@ -1,6 +1,6 @@
 const express = require('express');
 const empLoginModel = require('../model/loginModel.js');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 const routerControl = express.Router();
 
 exports.CreateUser = async (req, res) => {
@@ -8,7 +8,7 @@ exports.CreateUser = async (req, res) => {
     
     const { username, password } = req.body;
 
-    const passwordbcrypt = await bcrypt.hash(password, 10);
+    //const passwordbcrypt = await bcrypt.hash(password, 10);
 
     if(!username || !password) {
         return res.status(422).json({message: 'Username & password fields are required'})
@@ -38,7 +38,7 @@ exports.CreateUser = async (req, res) => {
     }*/
 
 
-    const userValue = new empLoginModel({ username, password, passwordbryt: passwordbcrypt });
+    const userValue = new empLoginModel({ username, password }); //, passwordbryt: passwordbcrypt
     
     console.log(userValue);
     
@@ -46,7 +46,7 @@ exports.CreateUser = async (req, res) => {
     
     //res.send(userValue);
 
-    return res.status(200).json({message: 'User created successfully',name:userDetails.username, password:userDetails.password, passwordbryt:userDetails.passwordbryt})
+    return res.status(200).json({message: 'User created successfully',name:userDetails.username, password:userDetails.password}) //, passwordbryt:userDetails.passwordbryt
     
 } catch (error) {
         return res.status(500).json({message: error.message})
