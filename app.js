@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // const cookieParser =  require('cookie-parser');
 // const MongoStore = require('connect-mongo');
 //const crypto = require('crypto');
-const cors = require('cors');
+//const cors = require('cors'); //New
 
 
 const connectDBRecords = require('./server/config/db.js');
@@ -13,7 +13,8 @@ const connectDBRecords = require('./server/config/db.js');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions)); //New
+
 // mongoose.connect("mongodb+srv://askarsahib11:admin@cluster0.9ie73.mongodb.net/");
 // const userSchema =  mongoose.Schema({
 //     name: String,
@@ -29,11 +30,13 @@ app.use(cors(corsOptions));
 //     age: 26
 //  })
 // user1.save();
-const corsOptions = {
-    origin: 'https://your-allowed-domain.com', // Specify allowed domain
-    methods: 'GET,POST', // Allowed HTTP methods
-    allowedHeaders: 'Content-Type,Authorization', // Allowed headers
-};
+
+
+// const corsOptions = {
+//     origin: 'https://your-allowed-domain.com', // Specify allowed domain
+//     methods: 'GET,POST', // Allowed HTTP methods
+//     allowedHeaders: 'Content-Type,Authorization', // Allowed headers
+// };
 
 
 
