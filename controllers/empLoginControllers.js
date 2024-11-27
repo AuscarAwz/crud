@@ -1,7 +1,8 @@
 const express = require('express');
 const empLoginModel = require('../model/loginModel.js');
-const routerControl = express.Router();
 const bcrypt = require('bcrypt');
+const routerControl = express.Router();
+
 
 exports.CreateUser = async (req, res) => {
     try {
@@ -46,7 +47,7 @@ exports.CreateUser = async (req, res) => {
     
     //res.send(userValue);
 
-    return res.status(200).json({message: 'User created successfully',name:userDetails.username, password:userDetails.password}) //, passwordbryt:userDetails.passwordbryt
+    return res.status(200).json({message: 'User created successfully',name:userDetails.username, password:userDetails.password, passwordbryt:userDetails.passwordbryt}) //, passwordbryt:userDetails.passwordbryt
     
 } catch (error) {
         return res.status(500).json({message: error.message})
