@@ -1,6 +1,6 @@
 const express = require('express');
 const empLoginModel = require('../model/loginModel.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const routerControl = express.Router();
 
 
