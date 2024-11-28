@@ -55,13 +55,10 @@ exports.CreateUser = async (req, res) => {
 }
 
 exports.GetAllUsers = async (req, res) => {
-    try {
+
         const usersRecords = await empLoginModel.find();
         console.log(usersRecords);
-        return res.status(200).json(usersRecords)
-    } catch (error) {
-        return res.status(400).json({message: error.message})
-}
+        return res.status(200).json(usersRecords);
 }
 
 exports.GetUsersById = async (req, res) => {
