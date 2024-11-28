@@ -93,7 +93,7 @@ exports.GetUserValidation = async (req, res) => {
             const existingUser = await empLoginModel.findOne({ username, password });
             console.log(existingUser);
             if (existingUser) {
-                return res.status(200).json({message: `${existingUser.username} User logged in successfully `,name:existingUser.username, password:existingUser.password})
+                return res.status(200).json({message: `${existingUser.username} User logged in successfully `}) //,name:existingUser.username, password:existingUser.password
             } else {
                 return res.status(400).json({message: 'Invalid username or password'})
             }
