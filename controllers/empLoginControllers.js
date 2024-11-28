@@ -64,9 +64,26 @@ exports.GetAllUsers = async (req, res) => {
 }
 }
 
+exports.GetUsersById = async (req, res) => {
+    try {
+        //const usersRecordsById = await empLoginModel.find( empLoginModel => empLoginModel._id ===  req.params._id );
+        const usersRecordsById = await empLoginModel.findById(req.params._id);;
+        console.log(usersRecordsById);
+
+        if(!usersRecordsById) {
+            return res.status(404).json({message: 'User not found'})
+        }
+        return res.status(200).json(usersRecordsById)
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+}
+}
+
 exports.GetUserValidation = async (req, res) => {
     try {
         const { username, password } = req.body;
+        
+
 
         if( !username || !password ) {
             return res.status(422).json({message: 'Username & password fields are required'})
@@ -81,27 +98,9 @@ exports.GetUserValidation = async (req, res) => {
                 return res.status(400).json({message: 'Invalid username or password'})
             }
         }
-        
-        
-
-    } catch (error) {
+        } catch (error) {
         return res.status(400).json({message: error.message})
     }
-}
-
-exports.GetUsersById = async (req, res) => {
-    try {
-        //const usersRecordsById = await empLoginModel.find( empLoginModel => empLoginModel._id ===  req.params._id );
-        const usersRecordsById = await empLoginModel.findById(req.params._id);;
-        console.log(usersRecordsById);
-
-        if(!usersRecordsById) {
-            return res.status(404).json({message: 'User not found'})
-        }
-        return res.status(200).json(usersRecordsById)
-    } catch (error) {
-        return res.status(400).json({message: error.message})
-}
 }
 
 // exports.UpdateLoginUserById = async (req, res) => {
