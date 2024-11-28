@@ -95,7 +95,7 @@ exports.GetUserValidation = async (req, res) => {
             if (existingUser) {
                 return res.status(200).json({message: `${existingUser.username} User logged in successfully `,name:existingUser.username}) //,name:existingUser.username, password:existingUser.password
             } else {
-                return res.status(400).json({message: 'Invalid username or password'})
+                return res.status(200).json({message: 'Invalid username or password'})
             }
         }
         } catch (error) {
